@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+scikit-learn
+tensorflow
+shap
+lime
+python-dotenv
+gunicorn

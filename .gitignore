@@ -1,0 +1,61 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+include/
+
+# Python compiled files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Node dependencies
+**/node_modules/
+
+# Frontend builds
+frontend/build/
+frontend/dist/
+
+# Environment files and credentials (CRITICAL)
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
+backend/.env.*.local
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Database backups & local datasets (except raw source)
+# datasets/
+
+# Dynamic upload files but keep folder structure
+backend/uploads/materials/*
+!backend/uploads/materials/.gitkeep
+backend/uploads/syllabus/*
+!backend/uploads/syllabus/.gitkeep
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Stray files
+uvicorn
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

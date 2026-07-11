@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: student_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: alan@12345
+      POSTGRES_DB: student_performance_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: student_backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:alan%4012345@db:5432/student_performance_db
+      ALLOWED_ORIGINS: "http://localhost:3000,http://localhost"
+      OPENAI_API_KEY: "sk-proj-xxxxxxxxxxxxxxxxxxxxxxxx"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - REACT_APP_API_URL=http://localhost:8000
+    container_name: student_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
